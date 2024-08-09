@@ -1,4 +1,4 @@
 export type ListInventoryItem = {
     text:string,
-    to: string
+    to?: string
 }

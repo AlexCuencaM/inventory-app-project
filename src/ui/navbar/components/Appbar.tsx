@@ -1,10 +1,15 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material'
+import { AppBar, Button, IconButton, Toolbar, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
+import { useAuth } from '../../../hooks/useAuth';
 interface AppbarProps {
     drawerWidth: number, 
     handleDrawerToggle: () => void,
 }
 export const Appbar = ({drawerWidth, handleDrawerToggle}: AppbarProps) => {
+  const {logout} = useAuth();
+  const handleClick = () => {
+    logout();
+  }
   return (
     <AppBar
         position="fixed"
@@ -23,9 +28,10 @@ export const Appbar = ({drawerWidth, handleDrawerToggle}: AppbarProps) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Responsive drawer
           </Typography>
+          <Button onClick={handleClick} color="inherit">Logout</Button>
         </Toolbar>
       </AppBar>
   )

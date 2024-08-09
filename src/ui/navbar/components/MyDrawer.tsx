@@ -35,9 +35,9 @@ export const MyDrawer = ({items}:MyDrawerProps) => {
       <Toolbar />
       <Divider />
       <List>
-        {items.map((item) => (
+        {items.filter(item => item.to).map((item) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemLink to={item.to} primary={item.text}/>
+            <ListItemLink to={item.to!} primary={item.text}/>
           </ListItem>
         ))}
       </List>
