@@ -8,14 +8,6 @@ import { MyDrawer } from './components/MyDrawer';
 import { ListInventoryItem } from './types';
 import { Outlet } from 'react-router-dom';
 const drawerWidth = 240;
-interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * Remove this when copying and pasting into your project.
-   */
-  window?: () => Window;
-  children: JSX.Element;
-}
 const items:ListInventoryItem[] = [{text: "Home", to: "/"}, {text: "Inventory", to: "/inventory"}, {text: "Logout", to: "/logout"}];
 export function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);

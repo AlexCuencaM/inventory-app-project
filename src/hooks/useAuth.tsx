@@ -12,20 +12,20 @@ type AuthStateProps = {
 
 export const useAuth = () => {
   const {user, setUser} = useInventoryContext();
-  const result:AuthStateProps = {
+  return {
     async loginAsync(user: UserLogin){
         try{
             const handle = await repo.loginAsync(user);
             setUser(handle);
             SaveData(handle, "user");
         }
-        catch(e){
+        catch(e: any){
+            console.error(e)
             throw e;
         }
     },
     IsUserLogged() {
         return user.IsLogged;
     },
-  }
-  return result;
+  } as AuthStateProps;
 }

@@ -14,10 +14,11 @@ export const LoginRepository: ILoginRepository = {
     loginAsync: async function (user: UserLogin): Promise<User> {
         try{
             const res = await Post<JWTRequest>("Login/login", user as UserLoginRequest);
-            const tokenDecoded = jwtDecode<JWTResponse>(res.Token);
+            const tokenDecoded = jwtDecode<JWTResponse>(res.token);
             const userLogged: User = {
                 Name: tokenDecoded.username,
                 Role: tokenDecoded.rol,
+                Token: res.token,
                 IsLogged: true
             };
             return userLogged;

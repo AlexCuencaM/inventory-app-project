@@ -1,8 +1,8 @@
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material'
+import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, OutlinedInputProps } from '@mui/material'
 import React from 'react'
 
-export const PasswordTextField = () => {
+export const PasswordTextField = (props: OutlinedInputProps) => {
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -10,7 +10,7 @@ export const PasswordTextField = () => {
     event.preventDefault();
   };
   return (
-    <FormControl variant="outlined">
+    <FormControl fullWidth variant="outlined">
           <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
@@ -28,6 +28,9 @@ export const PasswordTextField = () => {
               </InputAdornment>
             }
             label="Password"
+            name={props.name}
+            onChange={props.onChange}
+            value={props.value}
           />
         </FormControl> 
   )

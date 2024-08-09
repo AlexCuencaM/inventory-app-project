@@ -1,3 +1,3 @@
 export type JWTRequest = {
-    Token: string;
+    token: string;
 };
