@@ -17,7 +17,8 @@ export const LoginRepository: ILoginRepository = {
             const tokenDecoded = jwtDecode<JWTResponse>(res.Token);
             const userLogged: User = {
                 Name: tokenDecoded.username,
-                Role: tokenDecoded.rol
+                Role: tokenDecoded.rol,
+                IsLogged: true
             };
             return userLogged;
         }
