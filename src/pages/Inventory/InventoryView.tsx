@@ -1,4 +1,4 @@
-export const Inventory = () => {
+export const InventoryView = () => {
   return (
     <div>Inventory</div>
   )

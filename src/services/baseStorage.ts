@@ -15,7 +15,7 @@ export const baseStorage = <T extends unknown>() => {
         const objToken: T = {} as T;
 
         if (value != null) {
-            const objToken: T = (typeof value === "string") ? value as T : JSON.parse(value);
+            const objToken: T = (typeof value === "string") ? JSON.parse(value) : new Error("Parse unexpected");
             return objToken;
         }
 

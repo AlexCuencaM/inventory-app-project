@@ -25,6 +25,7 @@ export const useAuth = () => {
         }
     },
     IsUserLogged() {
+        console.log(user)
         return user.IsLogged;
     },
   } as AuthStateProps;

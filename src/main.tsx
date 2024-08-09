@@ -7,10 +7,10 @@ import { InventoryContext } from './state/InventoryContext'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-        <Theme>
             <InventoryContext>
-                <RouterProvider router={AppRouter}/>
+                <Theme>
+                    <RouterProvider router={AppRouter}/>
+                </Theme>
             </InventoryContext>
-        </Theme>
   </StrictMode>,
 )

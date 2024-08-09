@@ -1,4 +1,4 @@
-export const Home = () => {
+export const HomeView = () => {
   return (
     <div>Home</div>
   )

@@ -1,5 +1,5 @@
 
-import { Alert, Button, Container, Grid, TextField, Typography } from '@mui/material'
+import {  Button, Container, Grid, TextField, Typography } from '@mui/material'
 import { PasswordTextField } from './components/PasswordTextField'
 import { FormEvent } from 'react'
 import { UserLogin } from '../../data/Entities/UserLogin';
@@ -12,7 +12,7 @@ const initialData:UserLogin = {
     Username: '',
     Password: ''
 }
-export const Login = () => {
+export const LoginView = () => {
     const navigate = useNavigate();
     const request = useAuth();
     const { form, setForm } = useForm(initialData);

@@ -8,7 +8,7 @@ import { MyDrawer } from './components/MyDrawer';
 import { ListInventoryItem } from './types';
 import { Outlet } from 'react-router-dom';
 const drawerWidth = 240;
-const items:ListInventoryItem[] = [{text: "Home", to: "/"}, {text: "Inventory", to: "/inventory"}, {text: "Logout", to: "/logout"}];
+const items:ListInventoryItem[] = [{text: "Home", to: "/app"}, {text: "Inventory", to: "/app/inventory"}, {text: "Logout", to: "/app/logout"}];
 export function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
