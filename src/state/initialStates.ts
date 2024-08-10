@@ -1,7 +1,7 @@
-import { User } from '../data/Entities/UserLogin';
+import { UserState } from '../data/Entities/UserLogin';
 import { baseStorage } from '../services/baseStorage';
 const { GetData }= baseStorage();
-export const initialUser: User = GetData<User>('user') || {
+export const initialUser: UserState = GetData<UserState>('user') || {
     Name: "",
     Role: "",
     IsLogged: false

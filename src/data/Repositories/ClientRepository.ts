@@ -5,7 +5,7 @@ import { Post, Get, Delete, Put } from "../HttpClient/ClientMethods";
 import { IClientRepository } from "../Interfaces/IClientRepository";
 
 export const ClientRepository: IClientRepository = {
-    CreateClientAsync: async function (client: Client): Promise<MessageInfoDTO> {
+    CreateAsync: async function (client: Client): Promise<MessageInfoDTO> {
         try{
             const res = await Post<MessageInfoDTO>("Cliente/crear", client as ClientDTO);
             return res;
@@ -15,9 +15,9 @@ export const ClientRepository: IClientRepository = {
             throw e;
         }
     },
-    DeleteClientAsync: async function (id: number): Promise<MessageInfoDTO> {
+    DeleteAsync: async function (id: number): Promise<MessageInfoDTO> {
         try{
-            const res = await Get<MessageInfoDTO>("Cliente/" + id)
+            const res = await Delete<MessageInfoDTO>("Cliente/", id)
             return res;
         }
         catch(e){
@@ -45,7 +45,7 @@ export const ClientRepository: IClientRepository = {
             throw e;
         }
     },
-    GetByDNI: async function (dni: string): Promise<Client> {
+    GetByCriteria: async function (dni: string): Promise<Client> {
         try{
             const res = await Get<Client>("Cliente/identificacion/" + dni)
             return res;
@@ -55,7 +55,7 @@ export const ClientRepository: IClientRepository = {
             throw e;
         }
     },
-    UpdateClientAsync: async function (client: Client): Promise<MessageInfoDTO> {
+    UpdateAsync: async function (client: Client): Promise<MessageInfoDTO> {
         try{
             const res = await Put<MessageInfoDTO>("Cliente/modificar", client as ClientDTO);
             return res;

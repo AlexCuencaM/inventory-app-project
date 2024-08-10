@@ -1,4 +1,4 @@
-export type User = {
+export type UserState = {
     Name: string;
     Role: string;
     Token: string;
