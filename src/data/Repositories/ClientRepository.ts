@@ -1,8 +1,8 @@
 import { ClientDTO } from "../DTOs/ClientDTO";
-import { MessageInfoDTO } from "../DTOs/MessageInfoDTO";
-import { Client } from "../Entities/Client";
-import { Post, Get, Delete, Put } from "../HttpClient/ClientMethods";
 import { IClientRepository } from "../Interfaces/IClientRepository";
+import { Client } from "../Entities/Client";
+import { MessageInfoDTO } from "../DTOs/MessageInfoDTO";
+import { Post, Get, Delete, Put } from "../HttpClient/ClientMethods";
 
 export const ClientRepository: IClientRepository = {
     CreateAsync: async function (client: Client): Promise<MessageInfoDTO> {
