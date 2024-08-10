@@ -1,7 +1,13 @@
-import React from 'react'
+import { UserEdit } from './components/UserEdit'
+import { UserCreate } from './components/UserCreate'
+import { UserTableView } from './components/UserTableView'
 
 export const UsersView = () => {
   return (
-    <div>UsersView</div>
+    <>
+        <UserCreate/>
+        <UserTableView/>
+        <UserEdit/>
+    </>
   )
 }

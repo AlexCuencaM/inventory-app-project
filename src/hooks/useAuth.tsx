@@ -30,11 +30,12 @@ export const useAuth = () => {
     },
     logout(){
         RemoveData('user');
-        setUser(initialUser);
+        setUser({
+            ...initialUser
+        });
         navigate("/");
     },
     IsUserLogged() {
-        console.log(user)
         return user.IsLogged;
     },
   } as AuthStateProps;
