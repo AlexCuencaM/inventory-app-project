@@ -1,29 +1,46 @@
 import { Button, ButtonGroup } from '@mui/material';
-import { DataGrid, GridRowsProp, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
-const rows: GridRowsProp = [
-    { id: 1, col1: 'Hello', col2: 'World', },
-    { id: 2, col1: 'DataGridPro', col2: 'is Awesome'},
-    { id: 3, col1: 'MUI', col2: 'is Amazing'},
-    
-  ];
-  
-  const columns: GridColDef[] = [
-    { field: 'col1', headerName: 'Column 1', width: 150 },
-    { field: 'col2', headerName: 'Column 2', width: 150 },
-    { field: 'actions', headerName: 'Acciones', width: 250, renderCell: (params: GridRenderCellParams<any, any>) =>( <ButtonGroup
-        disableElevation
-        variant="contained"
-        aria-label="Disabled button group"
-    >
-        <Button>Edit</Button>
-        <Button>Delete</Button>
-    </ButtonGroup>) },
-  ];
+import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid'; 
+import { User } from '../../../data/Entities/User';
+import { useDialog } from '../../../hooks/useDialog';
+const columns = (handleClickEdit: (id:number) => void, handleClickDelete: (id:number) => void) =>{
+    return [
+        { field: 'Identificacion', headerName: 'Identificacion', width: 150 },
+        { field: 'Nombres', headerName: 'Nombres', width: 150 },
+        { field: 'Apellidos', headerName: 'Apellidos', width: 150 },
+        { field: 'Correo', headerName: 'Correo', width: 150 },
+        { field: 'Username', headerName: 'Username', width: 150 },
+        { field: 'Contraseña', headerName: 'Contraseña', width: 150 },
+        { field: 'actions', headerName: 'Acciones', width: 250, 
+            renderCell: (params: GridRenderCellParams) =>(<ButtonGroup
+            disableElevation
+            variant="contained"
+            aria-label="Disabled button group"
+            >
+                <Button onClick={() => {
+                    handleClickEdit(Number(params["id"]));
+                }}>Edit</Button>
+                <Button onClick={() => {
+                    handleClickDelete(Number(params["id"]));
+                    }}>Delete</Button>
+            </ButtonGroup> ) },
+      ];
 
-export const UserTableView = () => {
+} 
+interface UserTableViewProps {
+    rows: User[];
+}
+export const UserTableView = ({rows}: UserTableViewProps) => {
+    const {handleClickOpen} = useDialog();
+    const handleClickEdit = (id:number) => {
+      handleClickOpen();
+    }
+    const handleClickDelete = (id:number) => {
+        handleClickOpen();
+      }
+
   return (
     <div style={{ height: 300, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} />
+      <DataGrid rows={rows} columns={columns(handleClickEdit, handleClickDelete)} />
     </div>
   )
 }
