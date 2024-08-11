@@ -1,5 +1,4 @@
 import React from 'react'
-import { useDialog } from '../../hooks/useDialog';
 import { Button, Dialog } from '@mui/material';
 import { MyDialogTitle } from './components/MyDialogTitle';
 import { MyDialogContent } from './components/MyDialogContent';

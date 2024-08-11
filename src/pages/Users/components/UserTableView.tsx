@@ -4,12 +4,11 @@ import { User } from '../../../data/Entities/User';
 import { useDialog } from '../../../hooks/useDialog';
 const columns = (handleClickEdit: (id:number) => void, handleClickDelete: (id:number) => void) =>{
     return [
-        { field: 'Identificacion', headerName: 'Identificacion', width: 150 },
-        { field: 'Nombres', headerName: 'Nombres', width: 150 },
-        { field: 'Apellidos', headerName: 'Apellidos', width: 150 },
-        { field: 'Correo', headerName: 'Correo', width: 150 },
-        { field: 'Username', headerName: 'Username', width: 150 },
-        { field: 'Contraseña', headerName: 'Contraseña', width: 150 },
+        { field: 'identificacion', headerName: 'Identificacion', width: 150 },
+        { field: 'nombres', headerName: 'Nombres', width: 150 },
+        { field: 'apellidos', headerName: 'Apellidos', width: 150 },
+        { field: 'correo', headerName: 'Correo', width: 150 },
+        { field: 'username', headerName: 'Username', width: 150 },        
         { field: 'actions', headerName: 'Acciones', width: 250, 
             renderCell: (params: GridRenderCellParams) =>(<ButtonGroup
             disableElevation
