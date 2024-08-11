@@ -26,6 +26,9 @@ export interface MyContextProps {
     sales: Sales[];
     setSales:React.Dispatch<React.SetStateAction<Sales[]>>;
     setOpenDetailDialog: React.Dispatch<React.SetStateAction<boolean>>;
+    sale: Sales;
+    setSale:React.Dispatch<React.SetStateAction<Sales>>;
+
   setOpenCreateDialog: React.Dispatch<React.SetStateAction<boolean>>;
   setOpenEditDialog: React.Dispatch<React.SetStateAction<boolean>>;
   setOpenDeleteDialog: React.Dispatch<React.SetStateAction<boolean>>;

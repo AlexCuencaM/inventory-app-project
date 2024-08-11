@@ -3,6 +3,7 @@ import { InventoryDTO } from "../data/DTOs/InventoryDTO";
 import { LaboratoryDTO } from "../data/DTOs/LaboratoryDTO";
 import { ProviderDTO } from "../data/DTOs/ProviderDTO";
 import { Product } from "../data/Entities/Product";
+import { Sales } from "../data/Entities/Sales";
 import { User } from "../data/Entities/User";
 import { UserState } from "../data/Entities/UserLogin";
 import { baseStorage } from "../services/baseStorage";
@@ -16,7 +17,18 @@ export const initialUser: UserState =
     Token: "",
     IsLogged: false,
   } as UserState);
-
+export const initialSales: Sales = {
+    id: 0,
+    fechaVenta: new Date(),
+    idCliente: 0,
+    cliente: "",
+    idUsuario: 0,
+    subtotal: 0,
+    ivaPor: 0,
+    iva: 0,
+    total: 0,
+    ventaDetalles: []
+}
 export const initialAppUser: User = {
   id: 0,
   identificacion: "",

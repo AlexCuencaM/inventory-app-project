@@ -31,13 +31,13 @@ interface SalesTableViewProps {
 }
 
 export const ResupplyTableView = ({setStateForm}: SalesTableViewProps) => {
-  const { handleCloseDetailDialog } = useDialog();
+  const { handleOpenDetailDialog } = useDialog();
   const { sales, getAsync } = useSales()
-  console.log(sales)
   const handleClickDetail = (id:number) => {
     getAsync(id).then((res) => {
+        console.log(res)
         setStateForm(res);
-        handleCloseDetailDialog();
+        handleOpenDetailDialog();
     })
     .catch(err => {
         inventoryAlert(err.response?.data?.message ?? "Unexpected error")

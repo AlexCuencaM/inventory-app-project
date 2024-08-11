@@ -4,9 +4,10 @@ import { useInventoryContext } from "./useInventoryContext";
 
 const repo: ISaleRepository = SaleRepository;
 export const useSales = () => {
-  const { sales, setSales } = useInventoryContext();
+  const { sales, setSales, sale, setSale} = useInventoryContext();
   return {
     sales,
+    sale,
     async getAllAsync(){
         try{
             const handle = await repo.GetAllAsync();
@@ -20,6 +21,7 @@ export const useSales = () => {
     async getAsync(id:number){
         try{
             const handle = await repo.GetByIdAsync(id);
+            setSale(handle)
             return handle;
         }
         catch(e){

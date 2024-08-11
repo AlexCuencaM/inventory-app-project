@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { UserState } from '../data/Entities/UserLogin';
-import { initialUser } from './initialStates';
+import { initialSales, initialUser } from './initialStates';
 import { MyContext, MyContextProps } from '../hooks/useInventoryContext';
 import { User } from '../data/Entities/User';
 import { Product } from "../data/Entities/Product";
@@ -13,6 +13,7 @@ import { Sales } from '../data/Entities/Sales';
 interface SurveyContextProps{
     children: JSX.Element;
 }
+
 export const InventoryContext = ({ children }: SurveyContextProps) => {
   const [user, setUser] = useState<UserState>(initialUser);
   const [openCreateDialog, setOpenCreateDialog] = useState(false);
@@ -26,6 +27,8 @@ export const InventoryContext = ({ children }: SurveyContextProps) => {
   const [appProviders, setAppProviders] = useState<Provider[]>([]);
   const [openDetailDialog, setOpenDetailDialog] = useState(false);
   const [sales, setSales] = useState<Sales[]>([])
+  const [sale, setSale] = useState<Sales>(initialSales)
+
   const value: MyContextProps = {
     user,
     appUsers,
@@ -48,9 +51,11 @@ export const InventoryContext = ({ children }: SurveyContextProps) => {
     appProviders,
     setAppProviders,
     setOpenDetailDialog,
-        openDetailDialog,
-        setSales,
-        sales,
+    openDetailDialog,
+    setSales,
+    sales,
+    setSale,
+    sale,
   };
   return <MyContext.Provider value={value}>{children}</MyContext.Provider>;
 };

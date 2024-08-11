@@ -1,15 +1,14 @@
-import React from 'react'
 import { Button, Dialog } from '@mui/material';
 import { MyDialogTitle } from './components/MyDialogTitle';
 import { MyDialogContent } from './components/MyDialogContent';
 import { MyDialogActions } from './components/MyDialogActions';
-interface FormDialogProps{
+interface SimpleDialogProps{
     title:string;
     children: JSX.Element;
     openDialog: boolean;
     handleDialog: () => void;
 }
-export const FormDialog = ({title, children, openDialog, handleDialog}: FormDialogProps) => {
+export const SimpleDialog = ({title, children, openDialog, handleDialog}: SimpleDialogProps) => {
   const handleClick = () => {
     handleDialog();
   }
