@@ -6,6 +6,7 @@ import { baseStorage } from '../services/baseStorage';
 import { IAuthState } from '../state/Interfaces/IAuthState';
 import { initialUser } from '../state/initialStates';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 const repo:ILoginRepository = LoginRepository; 
 const {SaveData, RemoveData} = baseStorage();
 type AuthStateProps = {
@@ -17,11 +18,11 @@ export const useAuth = () => {
   const {user, setUser} = useInventoryContext();
   const navigate = useNavigate();
   return {
-    async loginAsync(user: UserLogin){
+    async loginAsync(newUser: UserLogin){
         try{
-            const handle = await repo.loginAsync(user);
+            const handle = await repo.loginAsync(newUser);
             setUser(handle);
-            SaveData(handle, "user");
+            SaveData(handle, "user-inventory-app");
         }
         catch(e: any){
             console.error(e)
@@ -29,9 +30,12 @@ export const useAuth = () => {
         }
     },
     logout(){
-        RemoveData('user');
+        RemoveData('user-inventory-app');
         setUser({
-            ...initialUser
+            Name: "",
+            Role: "",
+            Token: "",
+            IsLogged: false
         });
         navigate("/");
     },
