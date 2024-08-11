@@ -5,7 +5,10 @@ import { IUserRepository } from '../../data/Interfaces/IUserRepository';
 import { UserRepository } from '../../data/Repositories/UserRepository';
 import { useEffect } from 'react';
 import { Typography } from '@mui/material';
+import { UserDelete } from './components/UserDelete';
+
 const repo: IUserRepository = UserRepository;
+
 export const UsersView = () => {
 //   useEffect(() => {
 //     repo.GetAllAsync().then(res => {

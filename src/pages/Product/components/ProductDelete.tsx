@@ -1,13 +1,15 @@
-import { Button, IconButton, Paper } from "@mui/material";
+
+import { IconButton, Paper } from "@mui/material";
 import { inventoryAlert } from "../../../ui/Alert/InventoryAlert";
 import DeleteIcon from '@mui/icons-material/Delete';
 
+
 export const UserDelete = () => {
   const handleClick = () => {
-    const userConfirmed = inventoryAlert("¿Desea eliminar este usuario?");
+    const userConfirmed = inventoryAlert("¿Desea eliminar este Producto?");
     if (userConfirmed) {
-      inventoryAlert("Usuario eliminado.");
-    }
+      inventoryAlert("Producto eliminado.");
+    } 
   };
 
   return (
