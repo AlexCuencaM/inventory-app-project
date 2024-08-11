@@ -7,7 +7,6 @@ interface RequireAuthProps {
 export default function PublicRoute({children}: RequireAuthProps) {
     const logged: IAuthState = useAuth();
     const isLoggedIn = logged.IsUserLogged();
-    // console.log(isLoggedIn)
     const location = useLocation();
     if (isLoggedIn) {
         return <Navigate to="/app" replace state={{ path: location.pathname }}/>

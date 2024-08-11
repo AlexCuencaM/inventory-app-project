@@ -1,5 +1,5 @@
 export type Laboratory = {
-    IdCliente: number,
+    id: number,
     Identificacion: string,
     NombreCompleto: string,
     RazonSocial: string,

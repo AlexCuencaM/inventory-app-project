@@ -1,5 +1,5 @@
 export type UserDTO = {
-    IdUsuario:number,
+    id:number,
     Identificacion? :string,
     Nombres? :string,
     Apellidos? :string,
