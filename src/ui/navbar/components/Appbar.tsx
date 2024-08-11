@@ -8,6 +8,7 @@ interface AppbarProps {
 export const Appbar = ({drawerWidth, handleDrawerToggle}: AppbarProps) => {
   const {logout} = useAuth();
   const handleClick = () => {
+    console.log("appbar clic")
     logout();
   }
   return (

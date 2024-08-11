@@ -1,12 +1,14 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { axiosClient } from "./AxiosClient";
 import { initialUser } from "../../state/initialStates";
-export const { Token } = initialUser;
+
 export const Get = async <T extends unknown>(
     endpoint: string,
     authorized: boolean = true,
     params?: object,
 ): Promise<T> => {
+    const { Token } = initialUser;
+    console.log(initialUser)
     if (authorized) {
         axiosClient.interceptors.request.use(config => {
             config.headers.Authorization = `Bearer ${Token}`;
@@ -27,6 +29,7 @@ export const Post = async <T extends unknown>(
     authorized: boolean = true,
     params?: object,
 ): Promise<T> => {
+    const { Token } = initialUser;
     if (authorized) {
         axiosClient.interceptors.request.use(config => {
             config.headers.Authorization = `Bearer ${Token}`;
@@ -48,6 +51,7 @@ export const Put = async <T extends unknown>(
     authorized: boolean = true,
     params?: object,
 ): Promise<T> => {
+    const { Token } = initialUser;
     if (authorized) {
         axiosClient.interceptors.request.use(config => {
             config.headers.Authorization = `Bearer ${Token}`;
@@ -69,6 +73,7 @@ export const Delete = async <T extends unknown>(
     authorized: boolean = true,
     params?: object,
 ): Promise<T> => {
+    const { Token } = initialUser;
     if (authorized) {
         axiosClient.interceptors.request.use(config => {
             config.headers.Authorization = `Bearer ${Token}`;
