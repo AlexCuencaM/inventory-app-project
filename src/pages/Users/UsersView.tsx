@@ -8,6 +8,7 @@ export const UsersView = () => {
   const { appUsers, getAllAsync } = useUser();
   useEffect(() => {
     getAllAsync().then();
+    console.log(appUsers);
   }, [])
   return (
     <>

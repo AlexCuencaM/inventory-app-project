@@ -1,9 +1,7 @@
 import { AxiosError, AxiosResponse } from "axios";
 import { axiosClient } from "./AxiosClient";
-import { baseStorage } from "../../services/baseStorage";
-import { UserState } from "../Entities/UserLogin";
-const {GetData} = baseStorage()
-export const { Token } = GetData<UserState>("user");
+import { initialUser } from "../../state/initialStates";
+export const { Token } = initialUser;
 export const Get = async <T extends unknown>(
     endpoint: string,
     authorized: boolean = true,
