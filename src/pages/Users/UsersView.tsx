@@ -4,6 +4,7 @@ import { UserTableView } from './components/UserTableView'
 import { useEffect } from 'react';
 import { Typography } from '@mui/material';
 import { useUser } from '../../hooks/useUser';
+
 export const UsersView = () => {
   const { appUsers, getAllAsync } = useUser();
   useEffect(() => {

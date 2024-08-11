@@ -2,6 +2,8 @@ import { Button, ButtonGroup } from '@mui/material';
 import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid'; 
 import { User } from '../../../data/Entities/User';
 import { useDialog } from '../../../hooks/useDialog';
+import { useUser } from '../../../hooks/useUser';
+import { inventoryAlert } from '../../../ui/Alert/InventoryAlert';
 const columns = (handleClickEdit: (id:number) => void, handleClickDelete: (id:number) => void) =>{
     return [
         { field: 'identificacion', headerName: 'Identificacion', width: 150 },
@@ -29,11 +31,25 @@ interface UserTableViewProps {
 }
 export const UserTableView = ({rows}: UserTableViewProps) => {
     const {handleOpenEditDialog, handleOpenDeleteDialog} = useDialog();
+    const { deleteAsync, getAsync } = useUser();
     const handleClickEdit = (id:number) => {
-        handleOpenEditDialog();
+        getAsync(id).then(() => {
+            handleOpenEditDialog();
+        })
+        .catch(err => {
+            inventoryAlert(err.response?.data?.message ?? "Unexpected error")
+        })
     }
     const handleClickDelete = (id:number) => {
-        handleOpenDeleteDialog();
+        deleteAsync(id).then(res => {
+            inventoryAlert(res);
+        })
+        .catch(err => {
+            inventoryAlert(err.response?.data?.message ?? "Unexpected error")
+        })
+        .finally(() => {
+            handleOpenDeleteDialog();
+        })
       }
 
   return (

@@ -10,5 +10,13 @@ export const initialUser: UserState = GetData("user-inventory-app") || {
 } as UserState
 
 export const initialAppUser: User = {
-    id: 0
+    id: 0,
+    identificacion: "",
+    nombres: "",
+    apellidos: "",
+    correo: "",
+    username: "",
+    contraseña: "",
+    rol: "",
+    intentosFallidos: 0
 }

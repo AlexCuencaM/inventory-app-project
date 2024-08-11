@@ -4,9 +4,7 @@ import { LoginRepository } from '../data/Repositories/LoginRepository';
 import { UserLogin } from '../data/Entities/UserLogin';
 import { baseStorage } from '../services/baseStorage';
 import { IAuthState } from '../state/Interfaces/IAuthState';
-import { initialUser } from '../state/initialStates';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 const repo:ILoginRepository = LoginRepository; 
 const {SaveData, RemoveData} = baseStorage();
 type AuthStateProps = {

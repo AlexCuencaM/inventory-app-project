@@ -1,18 +1,32 @@
-import { Box, Button, Paper, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import { useDialog } from "../../../hooks/useDialog";
 import { FormDialog } from "../../../ui/Dialog/FormDialog";
+import { useForm } from "../../../hooks/useForm";
+import { initialAppUser } from "../../../state/initialStates";
+import { useUser } from "../../../hooks/useUser";
+import { inventoryAlert } from "../../../ui/Alert/InventoryAlert";
+import { PasswordTextField } from "../../Login/components/PasswordTextField";
 
 export const UserCreate = () => {
-  const { openCreateDialog, handleOpenCreateDialog, handleCloseCreateDialog } =
-    useDialog();
-  const handleClick = () => {
-    handleOpenCreateDialog();
+  const { openCreateDialog, 
+    handleOpenCreateDialog,
+    handleCloseCreateDialog 
+  } = useDialog();
+  const { form, setForm, setStateForm } = useForm({...initialAppUser});
+  const { postAsync } = useUser();
+  const handleSubmit = () => {
+    postAsync(form).then(res => {
+        inventoryAlert(res);
+        setStateForm({...initialAppUser})
+    })
+    .catch(e => inventoryAlert(e.response?.data.message ?? "Unexpected error"));
   };
+
   return (
     <>
     <Box sx={{ marginBottom: 6, display: 'flex', justifyContent: 'flex-end' }}>
       <Button
-        onClick={handleClick}
+        onClick={handleOpenCreateDialog}
         variant="contained"
         size="small"
         sx={{
@@ -27,9 +41,7 @@ export const UserCreate = () => {
 
       <FormDialog
         title={"Crear usuario"}
-        handleSubmit={function (): void {
-          throw new Error("Function not implemented.");
-        }}
+        handleSubmit={handleSubmit}
         openDialog={openCreateDialog}
         handleDialog={handleCloseCreateDialog}
       >
@@ -37,9 +49,25 @@ export const UserCreate = () => {
           <TextField
             variant="filled"
             fullWidth
+            label="Identificacion"
+            placeholder="ej: 0912345678"
+            value={form.identificacion}
+            onChange={e => {
+                  setForm(e.target.value, "identificacion")
+              }}
+            required
+          />
+
+          <TextField
+            variant="filled"
+            fullWidth
             name="Nombres"
             label="Nombres"
             placeholder="ej: Juan"
+            value={form.nombres}
+            onChange={e => {
+                  setForm(e.target.value, "nombres")
+              }}
             required
           />
           <TextField
@@ -48,6 +76,10 @@ export const UserCreate = () => {
             name="Apellidos"
             label="Apellidos"
             placeholder="ej: Pérez"
+            value={form.apellidos}
+            onChange={e => {
+                  setForm(e.target.value, "apellidos")
+              }}
             required
           />
           <TextField
@@ -56,6 +88,10 @@ export const UserCreate = () => {
             name="Correo"
             label="Correo"
             placeholder="ej: usuario@ejemplo.com"
+            value={form.correo}
+            onChange={e => {
+                  setForm(e.target.value, "correo")
+              }}
             required
           />
           <TextField
@@ -63,22 +99,19 @@ export const UserCreate = () => {
             fullWidth
             name="Username"
             label="Usuario"
+            value={form.username}
+            onChange={e => {
+                  setForm(e.target.value, "username")
+              }}
             placeholder="ej: usuario123"
             required
-                        // value={form.Username}
-            // onChange={e => {
-            //     setForm(e.target.value, "Username")
-            // }}
           />
-          <TextField
-            variant="filled"
-            fullWidth
-            name="Contraseña"
-            label="Contraseña"
-            type="password"
-            placeholder="********"
-            required
-          />
+          <PasswordTextField name={"Contraseña"}
+                value={form.contraseña}
+                onChange={e => {
+                    setForm(e.target.value, "contraseña")
+                }}
+                />
         </Box>
       </FormDialog>
     </>
