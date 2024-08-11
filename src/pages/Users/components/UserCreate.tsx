@@ -3,9 +3,9 @@ import { useDialog } from "../../../hooks/useDialog"
 import { FormDialog } from "../../../ui/Dialog/FormDialog";
 
 export const UserCreate = () => {
-  const {handleClickOpen} = useDialog();
+  const {openCreateDialog, handleOpenCreateDialog, handleCloseCreateDialog} = useDialog();
   const handleClick = () => {
-    handleClickOpen();
+    handleOpenCreateDialog();
   }
   return (
     <>
@@ -16,7 +16,7 @@ export const UserCreate = () => {
         </Paper>
         <FormDialog title={"Crear usuario"} handleSubmit={function (): void {
               throw new Error("Function not implemented.");
-          } }>
+          } } openDialog={openCreateDialog} handleDialog={handleCloseCreateDialog}>
             <TextField
                 variant="filled"
                 fullWidth

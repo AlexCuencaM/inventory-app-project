@@ -4,8 +4,12 @@ import { User } from "../data/Entities/User";
 export interface MyContextProps{
     user: UserState;
     appUsers: User[];
-    openDialog: boolean;
-    setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
+    openEditDialog: boolean;
+    openDeleteDialog: boolean;
+    openCreateDialog: boolean;
+    setOpenCreateDialog: React.Dispatch<React.SetStateAction<boolean>>;
+    setOpenEditDialog: React.Dispatch<React.SetStateAction<boolean>>;
+    setOpenDeleteDialog: React.Dispatch<React.SetStateAction<boolean>>;
     setAppUsers: React.Dispatch<React.SetStateAction<User[]>>
     setUser: React.Dispatch<React.SetStateAction<UserState>>;
 }

@@ -1,25 +1,21 @@
 import { UserEdit } from './components/UserEdit'
 import { UserCreate } from './components/UserCreate'
 import { UserTableView } from './components/UserTableView'
-import { IUserRepository } from '../../data/Interfaces/IUserRepository';
-import { UserRepository } from '../../data/Repositories/UserRepository';
 import { useEffect } from 'react';
 import { Typography } from '@mui/material';
-const repo: IUserRepository = UserRepository;
+import { useUser } from '../../hooks/useUser';
 export const UsersView = () => {
-//   useEffect(() => {
-//     repo.GetAllAsync().then(res => {
-        
-//     })
-//   }, [])
-  
+  const { appUsers, getAllAsync } = useUser();
+  useEffect(() => {
+    getAllAsync().then();
+  }, [])
   return (
     <>
         <Typography variant="h1">
             Usuarios
         </Typography>
         <UserCreate/>
-        <UserTableView rows={[]}/>
+        <UserTableView rows={appUsers}/>
         <UserEdit/>
     </>
   )

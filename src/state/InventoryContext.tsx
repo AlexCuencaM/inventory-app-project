@@ -8,13 +8,19 @@ interface SurveyContextProps{
 }
 export const InventoryContext = ({children}: SurveyContextProps) => {
     const [user, setUser] = useState<UserState>(initialUser)
-    const [openDialog, setOpenDialog] = useState(false)
+    const [openCreateDialog, setOpenCreateDialog] = useState(false);
+    const [openEditDialog, setOpenEditDialog] = useState(false);
+    const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
     const [appUsers, setAppUsers] = useState<User[]>([])
     const value: MyContextProps = {
         user,
         appUsers,
-        openDialog,
-        setOpenDialog,
+        openEditDialog,
+        openDeleteDialog,
+        openCreateDialog,
+        setOpenCreateDialog,
+        setOpenDeleteDialog,
+        setOpenEditDialog,
         setAppUsers,
         setUser
     }
