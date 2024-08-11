@@ -14,6 +14,7 @@ export const UserCreate = () => {
                 Crear usuario
             </Button>
         </Paper>
+        
         <FormDialog title={"Crear usuario"} handleSubmit={function (): void {
               throw new Error("Function not implemented.");
           } } openDialog={openCreateDialog} handleDialog={handleCloseCreateDialog}>

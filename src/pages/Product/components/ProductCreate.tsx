@@ -3,33 +3,36 @@ import { useDialog } from "../../../hooks/useDialog";
 import { FormDialog } from "../../../ui/Dialog/FormDialog";
 
 export const ProductCreate = () => {
-    const {handleClickOpen} = useDialog();
-    const handleClick = () => {
-      handleClickOpen();
-    }
+
+  const {openCreateDialog, handleOpenCreateDialog, handleCloseCreateDialog} = useDialog();
+  const handleClick = () => {
+    handleOpenCreateDialog();
+  }
+
     return (
       <>
-          <Paper sx={{marginBottom: 6}}>
-              <Button onClick={handleClick}>
-                  Crear producto
-              </Button>
-          </Paper>
-          <FormDialog title={"Crear producto"} handleSubmit={function (): void {
-                throw new Error("Function not implemented.");
-            } }>
-              <TextField
-                  variant="filled"
-                  fullWidth
-                  name='Product'
-                  label="Producto"
-                  placeholder='ej: amoxicilina'
-                  required
-                      // value={form.Productname}
-                      // onChange={e => {
-                      //     setForm(e.target.value, "Productname")
-                      // }}
-                  />
-          </FormDialog>
+        <Paper sx={{marginBottom: 6}}>
+            <Button onClick={handleClick}>
+                Crear Producto
+            </Button>
+        </Paper>
+
+          <FormDialog title={"Crear usuario"} handleSubmit={function (): void {
+              throw new Error("Function not implemented.");
+          } } openDialog={openCreateDialog} handleDialog={handleCloseCreateDialog}>
+            <TextField
+                variant="filled"
+                fullWidth
+                name='Producto'
+                label="Producto"
+                placeholder='ej: usuario123'
+                required
+                    // value={form.Username}
+                    // onChange={e => {
+                    //     setForm(e.target.value, "Username")
+                    // }}
+                />
+        </FormDialog>
       </>
     )
   }
