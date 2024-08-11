@@ -3,14 +3,38 @@ import { useDialog } from "../../../hooks/useDialog";
 import { FormDialog } from "../../../ui/Dialog/FormDialog";
 
 export const UserCreate = () => {
+  const {openCreateDialog, handleOpenCreateDialog, handleCloseCreateDialog} = useDialog();
 
   const { handleClickOpen } = useDialog();
   const handleClick = () => {
+    handleOpenCreateDialog();
+  }
     handleClickOpen();
   };
 
   return (
     <>
+        <Paper sx={{marginBottom: 6}}>
+            <Button onClick={handleClick}>
+                Crear usuario
+            </Button>
+        </Paper>
+        <FormDialog title={"Crear usuario"} handleSubmit={function (): void {
+              throw new Error("Function not implemented.");
+          } } openDialog={openCreateDialog} handleDialog={handleCloseCreateDialog}>
+            <TextField
+                variant="filled"
+                fullWidth
+                name='Username'
+                label="Usuario"
+                placeholder='ej: usuario123'
+                required
+                    // value={form.Username}
+                    // onChange={e => {
+                    //     setForm(e.target.value, "Username")
+                    // }}
+                />
+        </FormDialog>
     <Box sx={{ marginBottom: 3, display: 'flex', justifyContent: 'flex-end' }}>
       <Button
         onClick={handleClick}

@@ -7,25 +7,26 @@ import { MyDialogActions } from './components/MyDialogActions';
 interface FormDialogProps{
     title:string;
     children: JSX.Element;
+    openDialog: boolean;
+    handleDialog: () => void;
     handleCancel?: () => void;
     handleSubmit: () => void;
 }
-export const FormDialog = ({title, children, handleCancel, handleSubmit}: FormDialogProps) => {
-  const { openDialog, handleClose } = useDialog();
+export const FormDialog = ({title, children, handleCancel, handleSubmit, openDialog, handleDialog}: FormDialogProps) => {
   const handleClick = () => {
     if(handleCancel){
         handleCancel();
     }
-    handleClose();
+    handleDialog();
   }
   const handleSubmitForm = () => {
     handleSubmit();
-    handleClose();
+    handleDialog();
   }
   return (
     <Dialog
         open={openDialog}
-        onClose={handleClose}
+        onClose={handleDialog}
         PaperProps={{
           component: 'form',
           onSubmit: (event: React.FormEvent<HTMLFormElement>) => {

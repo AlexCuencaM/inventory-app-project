@@ -1,13 +1,29 @@
 import { useInventoryContext } from './useInventoryContext';
 export const useDialog = () => {
-  const {openDialog, setOpenDialog } = useInventoryContext();
+  const { openEditDialog, setOpenEditDialog, openCreateDialog, setOpenCreateDialog,
+    openDeleteDialog, setOpenDeleteDialog } = useInventoryContext();
   return {
-    openDialog,
-    handleClickOpen(){
-        setOpenDialog(true);
+    openEditDialog,
+    openDeleteDialog,
+    openCreateDialog,
+    handleOpenCreateDialog(){
+        setOpenCreateDialog(true);
       },
-    handleClose(){
-        setOpenDialog(false);
-      }
+    handleCloseCreateDialog(){
+        setOpenCreateDialog(false);
+      },
+
+    handleOpenEditDialog(){
+        setOpenEditDialog(true);
+      },
+    handleCloseEditDialog(){
+        setOpenEditDialog(false);
+      },
+    handleOpenDeleteDialog(){
+        setOpenDeleteDialog(true);
+      },
+    handleCloseDeleteDialog(){
+        setOpenDeleteDialog(false);
+      },
   }
 }

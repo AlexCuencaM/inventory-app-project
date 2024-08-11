@@ -7,7 +7,7 @@ import { UserDTO } from "../DTOs/UserDTO";
 export const UserRepository: IUserRepository = {
     CreateAsync: async function (user: User): Promise<MessageInfoDTO> {
         try{
-            const res = await Post<MessageInfoDTO>("User/crear", user as UserDTO);
+            const res = await Post<MessageInfoDTO>("Usuario/crear", user as UserDTO);
             return res;
         }
         catch(e){
@@ -17,7 +17,7 @@ export const UserRepository: IUserRepository = {
     },
     DeleteAsync: async function (id: number): Promise<MessageInfoDTO> {
         try{
-            const res = await Delete<MessageInfoDTO>("User/", id)
+            const res = await Delete<MessageInfoDTO>("Usuario/", id)
             return res;
         }
         catch(e){
@@ -27,7 +27,7 @@ export const UserRepository: IUserRepository = {
     },
     GetAllAsync: async function (): Promise<User[]> {
         try{
-            const res = await Get<User[]>("User")
+            const res = await Get<User[]>("Usuario")
             return res;
         }
         catch(e){
@@ -37,7 +37,7 @@ export const UserRepository: IUserRepository = {
     },
     GetByIdAsync: async function (id: number): Promise<User> {
         try{
-            const res = await Get<User>("User/" + id)
+            const res = await Get<User>("Usuario/" + id)
             return res;
         }
         catch(e){
@@ -47,7 +47,7 @@ export const UserRepository: IUserRepository = {
     },
     GetByCriteria: async function (name: string): Promise<User> {
         try{
-            const res = await Get<User>("User/consultaPorNombre/" + name)
+            const res = await Get<User>("Usuario/consultaPorNombre/" + name)
             return res;
         }
         catch(e){
@@ -57,7 +57,7 @@ export const UserRepository: IUserRepository = {
     },
     UpdateAsync: async function (user: User): Promise<MessageInfoDTO> {
         try{
-            const res = await Put<MessageInfoDTO>("User/modificar", user as UserDTO);
+            const res = await Put<MessageInfoDTO>("Usuario/modificar", user as UserDTO);
             return res;
         }
         catch(e){

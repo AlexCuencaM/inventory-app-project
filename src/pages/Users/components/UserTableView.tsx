@@ -1,5 +1,5 @@
 import { Button, ButtonGroup } from '@mui/material';
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid'; 
+import { DataGrid, GridRenderCellParams } from '@mui/x-data-grid'; 
 import { User } from '../../../data/Entities/User';
 import { useDialog } from '../../../hooks/useDialog';
 const columns = (handleClickEdit: (id:number) => void, handleClickDelete: (id:number) => void) =>{
@@ -24,18 +24,17 @@ const columns = (handleClickEdit: (id:number) => void, handleClickDelete: (id:nu
                     }}>Delete</Button>
             </ButtonGroup> ) },
       ];
-
 } 
 interface UserTableViewProps {
     rows: User[];
 }
 export const UserTableView = ({rows}: UserTableViewProps) => {
-    const {handleClickOpen} = useDialog();
+    const {handleOpenEditDialog, handleOpenDeleteDialog} = useDialog();
     const handleClickEdit = (id:number) => {
-      handleClickOpen();
+        handleOpenEditDialog();
     }
     const handleClickDelete = (id:number) => {
-        handleClickOpen();
+        handleOpenDeleteDialog();
       }
 
   return (

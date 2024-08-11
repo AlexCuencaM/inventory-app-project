@@ -1,9 +1,11 @@
 import { Box, TextField } from "@mui/material";
 import { FormDialog } from "../../../ui/Dialog/FormDialog";
+import { useDialog } from "../../../hooks/useDialog";
 
 export const UserEdit = () => {
+    const {openEditDialog, handleCloseEditDialog } = useDialog()
   return (
-    <FormDialog title={"Editar usuario"} handleSubmit={function (): void {
+    <FormDialog openDialog={openEditDialog} handleDialog={handleCloseEditDialog} title={"Editar usuario"} handleSubmit={function (): void {
         throw new Error("Function not implemented.");
     } }>
       {/* <TextField
