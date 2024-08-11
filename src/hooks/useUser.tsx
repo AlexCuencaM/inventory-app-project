@@ -1,8 +1,6 @@
 import { User } from "../data/Entities/User";
 import { IUserRepository } from "../data/Interfaces/IUserRepository";
 import { UserRepository } from "../data/Repositories/UserRepository";
-import { initialAppUser } from "../state/initialStates";
-import { useForm } from "./useForm";
 import { useInventoryContext } from "./useInventoryContext";
 const repo: IUserRepository = UserRepository;
 export const useUser = () => {

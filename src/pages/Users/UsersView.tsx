@@ -10,13 +10,14 @@ import { useForm } from '../../hooks/useForm';
 export const UsersView = () => {
   const { appUsers, getAllAsync } = useUser();
   const { form, setForm, setStateForm } = useForm(initialAppUser);
+
   useEffect(() => {
     getAllAsync().then();
-    console.log(appUsers);
   }, [])
+
   return (
     <>
-        <Typography variant="h1">
+        <Typography variant="h2" gutterBottom>
             Usuarios
         </Typography>
         <UserCreate/>

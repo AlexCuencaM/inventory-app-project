@@ -7,14 +7,22 @@ import { Appbar } from './components/Appbar';
 import { MyDrawer } from './components/MyDrawer';
 import { ListInventoryItem } from './types';
 import { Outlet } from 'react-router-dom';  
+
+import InventoryIcon from '@mui/icons-material/Inventory';
+import PeopleIcon from '@mui/icons-material/People';
+import GroupIcon from '@mui/icons-material/Group';
+import LaboratoryIcon from '@mui/icons-material/LocalHospital';
+import ProductIcon from '@mui/icons-material/Store';
+import SupplierIcon from '@mui/icons-material/Business';
+
 const drawerWidth = 240;
-const items:ListInventoryItem[] = [
-    {text: "Inventory", to: "/app/inventory"},
-    {text: "Clientes", to: "/app/client"},
-    {text: "Usuarios", to: "/app/user"},
-    {text: "Laboratorio", to: "/app/laboratory"},
-    {text: "Productos", to: "/app/product"},
-    {text: "Proveedores", to: "/app/provider"},
+const items: ListInventoryItem[] = [
+  { text: "Inventory", to: "/app/inventory", icon: InventoryIcon },
+  { text: "Clientes", to: "/app/client", icon: PeopleIcon },
+  { text: "Usuarios", to: "/app/user", icon: GroupIcon },
+  { text: "Laboratorio", to: "/app/laboratory", icon: LaboratoryIcon },
+  { text: "Productos", to: "/app/product", icon: ProductIcon },
+  { text: "Proveedores", to: "/app/provider", icon: SupplierIcon },
 ];
 export function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);

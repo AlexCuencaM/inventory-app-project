@@ -8,6 +8,7 @@ export const ProductRepository: IProductRepository = {
     CreateAsync: async function (product: Product): Promise<MessageInfoDTO> {
         try{
             const res = await Post<MessageInfoDTO>("Producto/crear", product as ProductDTO);
+            console.log(res);
             return res;
         }
         catch(e){

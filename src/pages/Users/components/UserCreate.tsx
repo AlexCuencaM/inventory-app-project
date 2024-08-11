@@ -33,7 +33,8 @@ export const UserCreate = () => {
         sx={{
           fontSize: '0.75rem',
           padding: '4px 8px' ,
-          width:'15%'
+          width:'15%',
+          height:40
         }}
       >
         Crear usuario
