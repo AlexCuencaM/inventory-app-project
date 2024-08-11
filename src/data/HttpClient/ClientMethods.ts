@@ -8,7 +8,6 @@ export const Get = async <T extends unknown>(
     params?: object,
 ): Promise<T> => {
     const { Token } = initialUser;
-    console.log(initialUser)
     if (authorized) {
         axiosClient.interceptors.request.use(config => {
             config.headers.Authorization = `Bearer ${Token}`;
