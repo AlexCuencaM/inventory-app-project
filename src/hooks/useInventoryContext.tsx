@@ -1,12 +1,17 @@
 import { createContext, useContext } from "react";
 import { UserState } from "../data/Entities/UserLogin";
 import { User } from "../data/Entities/User";
+import { Sales } from "../data/Entities/Sales";
 export interface MyContextProps{
     user: UserState;
     appUsers: User[];
     openEditDialog: boolean;
     openDeleteDialog: boolean;
     openCreateDialog: boolean;
+    openDetailDialog: boolean;
+    sales: Sales[];
+    setSales:React.Dispatch<React.SetStateAction<Sales[]>>;
+    setOpenDetailDialog: React.Dispatch<React.SetStateAction<boolean>>;
     setOpenCreateDialog: React.Dispatch<React.SetStateAction<boolean>>;
     setOpenEditDialog: React.Dispatch<React.SetStateAction<boolean>>;
     setOpenDeleteDialog: React.Dispatch<React.SetStateAction<boolean>>;

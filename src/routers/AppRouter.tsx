@@ -9,6 +9,7 @@ import { UsersView } from "../pages/Users/UsersView";
 import { LaboratoryView } from "../pages/Laboratory/LaboratoryView";
 import { ProductView } from "../pages/Product/ProductView";
 import { ProviderView } from "../pages/Provider/ProviderView";
+import { ResupplyView } from "../pages/Resupply/ResupplyView";
 export const AppRouter = createBrowserRouter(createRoutesFromElements(
     <>
     <Route    
@@ -67,6 +68,13 @@ export const AppRouter = createBrowserRouter(createRoutesFromElements(
                 <ProviderView/>
             }
         />
+        <Route
+            path="resupply"
+            element = {
+                <ResupplyView/>
+            }
+        />
+
 
     </Route>
     </>

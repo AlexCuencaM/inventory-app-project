@@ -15,6 +15,7 @@ const items:ListInventoryItem[] = [
     {text: "Laboratorio", to: "/app/laboratory"},
     {text: "Productos", to: "/app/product"},
     {text: "Proveedores", to: "/app/provider"},
+    {text: "Reabastecimiento", to: "/app/resupply"},
 ];
 export function ResponsiveDrawer() {
   const [mobileOpen, setMobileOpen] = React.useState(false);

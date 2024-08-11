@@ -12,7 +12,6 @@ export const UsersView = () => {
   const { form, setForm, setStateForm } = useForm(initialAppUser);
   useEffect(() => {
     getAllAsync().then();
-    console.log(appUsers);
   }, [])
   return (
     <>
