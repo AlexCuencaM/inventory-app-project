@@ -1,5 +1,5 @@
 export type LaboratoryDTO = {
-    IdCliente: number,
+    id: number,
     Identificacion: string,
     NombreCompleto: string,
     RazonSocial: string,

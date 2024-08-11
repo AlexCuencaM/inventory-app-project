@@ -1,5 +1,5 @@
 export type ProviderDTO = {
-    IdProveedor:number,
+    id:number,
     Nombre:string,
     Telefono?:string,
     Direccion?:string,

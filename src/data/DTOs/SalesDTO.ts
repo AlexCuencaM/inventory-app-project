@@ -1,5 +1,5 @@
 export type SalesDTO = {
-    IdVenta:number,
+    id:number,
     FechaVenta:Date,
     IdCliente:number,
     IdUsuario:number,
@@ -11,7 +11,7 @@ export type SalesDTO = {
 }
 
 export type SalesDetailDTO = {
-     IdVentaDetalle:number,
+     id:number,
      IdVenta:number,
      IdProducto:number,
      Producto:string,
