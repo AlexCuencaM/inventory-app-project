@@ -1,4 +1,4 @@
-import { Button, IconButton, Paper } from "@mui/material";
+import { IconButton, Paper } from "@mui/material";
 import { inventoryAlert } from "../../../ui/Alert/InventoryAlert";
 import DeleteIcon from '@mui/icons-material/Delete';
 

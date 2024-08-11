@@ -7,11 +7,9 @@ import { useInventoryContext } from "./useInventoryContext";
 const repo: IUserRepository = UserRepository;
 export const useUser = () => {
     const { appUsers, setAppUsers } = useInventoryContext();
-    const { form, setForm, setStateForm } = useForm({...initialAppUser});
+    
+    
     return {
-        form,
-        setForm,
-        setStateForm,
         appUsers,
         async getAllAsync(){
             try{
@@ -66,7 +64,8 @@ export const useUser = () => {
         async getAsync(id:number){
             try{
                 const handle = await repo.GetByIdAsync(id);
-                setStateForm({...handle})
+                handle.contraseña = "";
+                return handle;
             }
             catch(e){
                 console.error(e)

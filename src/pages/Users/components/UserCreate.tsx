@@ -18,6 +18,7 @@ export const UserCreate = () => {
     postAsync(form).then(res => {
         inventoryAlert(res);
         setStateForm({...initialAppUser})
+        window.location.reload()
     })
     .catch(e => inventoryAlert(e.response?.data.message ?? "Unexpected error"));
   };

@@ -4,9 +4,12 @@ import { UserTableView } from './components/UserTableView'
 import { useEffect } from 'react';
 import { Typography } from '@mui/material';
 import { useUser } from '../../hooks/useUser';
+import { initialAppUser } from '../../state/initialStates';
+import { useForm } from '../../hooks/useForm';
 
 export const UsersView = () => {
   const { appUsers, getAllAsync } = useUser();
+  const { form, setForm, setStateForm } = useForm(initialAppUser);
   useEffect(() => {
     getAllAsync().then();
     console.log(appUsers);
@@ -17,8 +20,8 @@ export const UsersView = () => {
             Usuarios
         </Typography>
         <UserCreate/>
-        <UserTableView rows={appUsers}/>
-        <UserEdit/>
+        <UserTableView rows={appUsers} setStateForm={setStateForm}/>
+        <UserEdit setStateForm={setStateForm} form={form} setForm={setForm}/>
     </>
   )
 }

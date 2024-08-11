@@ -28,13 +28,16 @@ const columns = (handleClickEdit: (id:number) => void, handleClickDelete: (id:nu
 } 
 interface UserTableViewProps {
     rows: User[];
+    setStateForm: (value: User) => void;
 }
-export const UserTableView = ({rows}: UserTableViewProps) => {
+export const UserTableView = ({rows, setStateForm}: UserTableViewProps) => {
     const {handleOpenEditDialog, handleOpenDeleteDialog} = useDialog();
     const { deleteAsync, getAsync } = useUser();
     const handleClickEdit = (id:number) => {
-        getAsync(id).then(() => {
+        getAsync(id).then((res) => {
+            setStateForm(res);
             handleOpenEditDialog();
+            
         })
         .catch(err => {
             inventoryAlert(err.response?.data?.message ?? "Unexpected error")

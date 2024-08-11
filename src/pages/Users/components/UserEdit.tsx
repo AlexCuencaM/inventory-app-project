@@ -5,10 +5,16 @@ import { initialAppUser } from "../../../state/initialStates";
 import { useUser } from "../../../hooks/useUser";
 import { inventoryAlert } from "../../../ui/Alert/InventoryAlert";
 import { PasswordTextField } from "../../Login/components/PasswordTextField";
-
-export const UserEdit = () => {
+import { User } from "../../../data/Entities/User";
+interface UserEditProps {
+    setStateForm: (value: User) => void;
+    form: User;
+    setForm: <K extends keyof User>(value: User[K], field: K) => void
+}
+export const UserEdit = ({setStateForm, form, setForm}: UserEditProps) => {
+    // export const UserEdit = () => {
   const {openEditDialog, handleCloseEditDialog } = useDialog();
-  const { putAsync, setStateForm, form, setForm } = useUser();
+  const { putAsync } = useUser();
   const handleSubmit = () => {
     putAsync(form).then(res => {
         inventoryAlert(res);
