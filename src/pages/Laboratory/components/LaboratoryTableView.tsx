@@ -1,27 +1,25 @@
-import { Box, Button, ButtonGroup, IconButton, Paper } from "@mui/material";
+import { Box, Button, ButtonGroup, IconButton } from "@mui/material";
 import { DataGrid, GridRenderCellParams } from "@mui/x-data-grid";
-import { User } from "../../../data/Entities/User";
+import { Laboratory } from "../../../data/Entities/Laboratory";
 import { useDialog } from "../../../hooks/useDialog";
-import { useUser } from "../../../hooks/useUser";
-import { inventoryAlert } from "../../../ui/Alert/InventoryAlert";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { useLaboratory } from "../../../hooks/useLaboratory";
+import { inventoryAlert } from "../../../ui/Alert/InventoryAlert";
 
 const columns = (
   handleClickEdit: (id: number) => void,
   handleClickDelete: (id: number) => void
 ) => {
   return [
-    { field: "identificacion", headerName: "Identificacion", width: 150 },
-    { field: "nombres", headerName: "Nombres", width: 200 },
-    { field: "apellidos", headerName: "Apellidos", width: 200 },
-    { field: "correo", headerName: "Correo", width: 200 },
-    { field: "username", headerName: "Username", width: 200 },
+    { field: "nombre", headerName: "Nombres", width: 250 },
+    { field: "telefono", headerName: "Telefono", width: 200 },
+    { field: "direccion", headerName: "Direccion", width: 300 },
     {
       field: "actions",
       headerName: "Acciones",
-      width: 100,
+      width: 300,
       renderCell: (params: GridRenderCellParams) => (
         <ButtonGroup
           disableElevation
@@ -49,13 +47,17 @@ const columns = (
     },
   ];
 };
-interface UserTableViewProps {
-  rows: User[];
-  setStateForm: (value: User) => void;
+interface LaboratoryTableViewProps {
+  rows: Laboratory[];
+  setStateForm: (value: Laboratory) => void;
 }
-export const UserTableView = ({ rows, setStateForm }: UserTableViewProps) => {
+
+export const LaboratoryTableView = ({
+  rows,
+  setStateForm,
+}: LaboratoryTableViewProps) => {
   const { handleOpenEditDialog, handleOpenDeleteDialog } = useDialog();
-  const { deleteAsync, getAsync } = useUser();
+  const { deleteAsync, getAsync } = useLaboratory();
 
   const handleClickEdit = (id: number) => {
     getAsync(id)
@@ -84,19 +86,19 @@ export const UserTableView = ({ rows, setStateForm }: UserTableViewProps) => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '100%',
-        overflow: 'auto'
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+        overflow: "auto",
       }}
     >
-      <div style={{ flex: 1, width: '100%' }}>
+      <div style={{ flex: 1, width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns(handleClickEdit, handleClickDelete)}
-          autoHeight 
-          sx={{ minHeight: 300 }} 
+          autoHeight
+          sx={{ minHeight: 300 }}
         />
       </div>
     </Box>

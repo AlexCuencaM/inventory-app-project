@@ -6,13 +6,9 @@ interface DesktopDrawerProps {
 export const DrawerDesktop = ({drawerWidth, drawer}:DesktopDrawerProps) => {
   return (
     <Drawer
-          variant="permanent"
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-          open
-        >
+      variant="permanent"
+      sx={{ width: drawerWidth, flexShrink: 0, '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box' } }}
+    >
           {drawer}
         </Drawer>
   )

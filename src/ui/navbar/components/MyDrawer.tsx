@@ -1,4 +1,4 @@
-import { Divider, List, ListItem, ListItemButton, ListItemText, Toolbar } from '@mui/material'
+import { Box, Divider, Icon, List, ListItem, ListItemButton, ListItemIcon, ListItemText, SvgIcon, SvgIconProps, Toolbar } from '@mui/material'
 import React from 'react';
 import {
     Link as RouterLink,
@@ -11,6 +11,7 @@ interface MyDrawerProps {
 interface ListItemLinkProps {
     primary?: string;
     to: string;
+    icon: React.ComponentType<SvgIconProps>;
   }
 
 const Link = React.forwardRef<HTMLAnchorElement, RouterLinkProps>(
@@ -19,27 +20,53 @@ const Link = React.forwardRef<HTMLAnchorElement, RouterLinkProps>(
     },
   );
   function ListItemLink(props: ListItemLinkProps) {
-    const { primary = "p", to } = props;
+    const { primary = "p", to, icon: Icon } = props;
   
     return (
       <ListItemButton component={Link} to={to}>
-        <ListItemText primary={primary} />
-      </ListItemButton>
+      <ListItemIcon>
+        <Icon />
+      </ListItemIcon>
+      <ListItemText primary={primary} />
+    </ListItemButton>
     );
   }
 
-  
 export const MyDrawer = ({items}:MyDrawerProps) => {
   return (
     <div>
-      <Toolbar />
+      {/* <Toolbar /> */}
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'flex-start',   
+          width: '100%',           
+          height: 'flex',         
+          overflow: 'hidden',      
+        }}
+      >
+        <img
+          src="../src/assets/logo.png" 
+          alt="Insumos médicos" 
+          style={{
+            width: '250px', 
+            height: 'auto',
+            objectFit: 'contain'
+          }}
+        />
+      </Box>
       <Divider />
       <List>
-        {items.filter(item => item.to).map((item) => (
-          <ListItem key={item.text} disablePadding>
-            <ListItemLink to={item.to!} primary={item.text}/>
-          </ListItem>
-        ))}
+        {items.map((item) => {
+          if (item.to && item.icon) { 
+            return (
+              <ListItem key={item.text} disablePadding>
+                <ListItemLink to={item.to} primary={item.text} icon={item.icon} />
+              </ListItem>
+            );
+          }
+          return null;
+        })}
       </List>
     </div>
   );

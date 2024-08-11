@@ -1,23 +1,23 @@
-import { Box, Button, ButtonGroup, IconButton, Paper } from "@mui/material";
+import { Box, Button, ButtonGroup, IconButton } from "@mui/material";
 import { DataGrid, GridRenderCellParams } from "@mui/x-data-grid";
-import { User } from "../../../data/Entities/User";
+import { Client } from "../../../data/Entities/Client";
 import { useDialog } from "../../../hooks/useDialog";
-import { useUser } from "../../../hooks/useUser";
-import { inventoryAlert } from "../../../ui/Alert/InventoryAlert";
-
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { useClient } from "../../../hooks/useClient";
+import { inventoryAlert } from "../../../ui/Alert/InventoryAlert";
 
 const columns = (
   handleClickEdit: (id: number) => void,
   handleClickDelete: (id: number) => void
 ) => {
   return [
-    { field: "identificacion", headerName: "Identificacion", width: 150 },
-    { field: "nombres", headerName: "Nombres", width: 200 },
-    { field: "apellidos", headerName: "Apellidos", width: 200 },
+    { field: "identificacion", headerName: "Identificación", width: 100 },
+    { field: "nombreCompleto", headerName: "Nombre Completo", width: 200 },
+    { field: "razonSocial", headerName: "Razón Social", width: 100 },
+    { field: "telefono", headerName: "Teléfono", width: 150 },
+    { field: "direccion", headerName: "Dirección", width: 200 },
     { field: "correo", headerName: "Correo", width: 200 },
-    { field: "username", headerName: "Username", width: 200 },
     {
       field: "actions",
       headerName: "Acciones",
@@ -49,13 +49,18 @@ const columns = (
     },
   ];
 };
-interface UserTableViewProps {
-  rows: User[];
-  setStateForm: (value: User) => void;
+
+interface ClientTableViewProps {
+  rows: Client[];
+  setStateForm: (value: Client) => void;
 }
-export const UserTableView = ({ rows, setStateForm }: UserTableViewProps) => {
+
+export const ClientTableView = ({
+  rows,
+  setStateForm,
+}: ClientTableViewProps) => {
   const { handleOpenEditDialog, handleOpenDeleteDialog } = useDialog();
-  const { deleteAsync, getAsync } = useUser();
+  const { deleteAsync, getAsync } = useClient();
 
   const handleClickEdit = (id: number) => {
     getAsync(id)
@@ -84,19 +89,19 @@ export const UserTableView = ({ rows, setStateForm }: UserTableViewProps) => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '100%',
-        overflow: 'auto'
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+        overflow: "auto",
       }}
     >
-      <div style={{ flex: 1, width: '100%' }}>
+      <div style={{ flex: 1, width: "100%" }}>
         <DataGrid
           rows={rows}
           columns={columns(handleClickEdit, handleClickDelete)}
-          autoHeight 
-          sx={{ minHeight: 300 }} 
+          autoHeight
+          sx={{ minHeight: 300 }}
         />
       </div>
     </Box>
