@@ -1,5 +1,5 @@
 
-import {  Button, Container, Grid, TextField, Typography } from '@mui/material'
+import {  Avatar, Box, Button, Container, TextField, Typography } from '@mui/material'
 import { PasswordTextField } from './components/PasswordTextField'
 import { FormEvent } from 'react'
 import { UserLogin } from '../../data/Entities/UserLogin';
@@ -7,6 +7,8 @@ import { useForm } from '../../hooks/useForm';
 import { useAuth } from '../../hooks/useAuth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { inventoryAlert } from '../../ui/Alert/InventoryAlert';
+
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 const initialData:UserLogin = {
     Username: '',
@@ -29,46 +31,63 @@ export const LoginView = () => {
   
   return (
     <Container fixed>
-        <Grid spacing={2} component="form" onSubmit={handleSubmit}
-            container
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            height={"100vh"}
+         <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
         >
-            <Grid item>
-                <Typography variant="h1">
-                    Login
-                </Typography>
-            </Grid>
-            <Grid item>
-                <TextField
-                    fullWidth
-                    name='Username'
-                    label="Usuario"
-                    placeholder='ej: usuario123'
-                    required
-                    value={form.Username}
-                    onChange={e => {
-                        setForm(e.target.value, "Username")
-                    }}
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              autoFocus
+              name='Username'
+              label="Usuario"
+              placeholder='ej: usuario123'
+              value={form.Username}
+              onChange={e => {
+                  setForm(e.target.value, "Username")
+              }}
+            />
+            <PasswordTextField name={"Password"}
+                value={form.Password}
+                onChange={e => {
+                setForm(e.target.value, "Password")
+                }}
                 />
-            </Grid>
-            <Grid item>
-                <PasswordTextField name={"Password"}
-                 value={form.Password}
-                 onChange={e => {
-                    setForm(e.target.value, "Password")
-                    }}
-                 />
-            </Grid>
-            <Grid item>
-
-                <Button type='submit' variant="contained">
-                    Submit
-                </Button>
-            </Grid>
-        </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Iniciar sesión
+            </Button>
+             {/*<Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid> 
+            </Grid>*/}
+          </Box>
+        </Box>
     </Container>
   )
 }
